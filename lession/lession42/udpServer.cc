@@ -127,17 +127,35 @@ void execCommand(int sockfd, string ip, uint16_t port, string cmd)
 OnlineUser onlineUser;
 void routeMessage(int sockfd, string clientip, uint16_t clientport, string message)
 {
-    if (message == "online") onlineUser.addUser(clientip, clientport);
-    if (message == "offline") onlineUser.delUser(clientip, clientport);
+    std::cout << "[Callback 开始] routeMessage - clientip: '" << clientip << "', clientport: " << clientport << ", message: '" << message << "'" << std::endl;
+    if (message == "online") 
+    {
+        std::cout << "[Callback] 消息为 'online'" << std::endl;
+        onlineUser.addUser(clientip, clientport); // onlineUser 是在 udpServer.cc 中定义的全局或静态变量
+        std::cout << "[Callback] addUser 调用完毕" << std::endl;
+    }
+    if (message == "offline") 
+    {
+        std::cout << "[Callback] 消息为 'offline'" << std::endl;
+        onlineUser.delUser(clientip, clientport); // onlineUser 是在 udpServer.cc 中定义的全局或静态变量
+        std::cout << "[Callback] delUser 调用完毕" << std::endl;
+    }
+
+    std::cout << "[Callback] 准备检查用户是否在线..." << std::endl;
+    bool is_online = onlineUser.isOnline(clientip, clientport); // onlineUser 是在 udpServer.cc 中定义的全局或静态变量
+    std::cout << "[Callback] isOnline 返回: " << (is_online ? "是" : "否") << std::endl;
     
 
-    if (onlineUser.isOnline(clientip, clientport))
+    if (is_online)
     {
         // 消息路由
+        std::cout << "[Callback] 用户在线，准备广播消息..." << std::endl;
         onlineUser.broadcastMessage(sockfd,clientip,clientport,message);
+        std::cout << "[Callback] broadcastMessage 调用完毕" << std::endl;
     }
     else
     {
+        std::cout << "[Callback] 用户不在线，准备发送直接回复..." << std::endl;
         struct sockaddr_in client;
         bzero(&client, sizeof(client));
 

@@ -49,8 +49,8 @@ namespace client
                 socklen_t len = sizeof(tmp);
                 size_t n = recvfrom(sockfd, buffer, sizeof(buffer) - 1, 0, (struct sockaddr *)&tmp, &len);
 
-                // if (n > 0)
-                //     buffer[n] = 0;
+                if (n > 0)
+                    buffer[n] = '\0';
                 cout << "接收到的消息: " << buffer << endl;
             }
             return nullptr;
@@ -81,14 +81,14 @@ namespace client
 
                 sendto(_sockfd, msg.c_str(), msg.size(), 0, (struct sockaddr *)&server, sizeof(server));
 
-                char buffer[1024];
-                struct sockaddr_in tmp;
-                socklen_t len = sizeof(tmp);
-                size_t n = recvfrom(_sockfd, buffer, sizeof(buffer) - 1, 0, (struct sockaddr *)&tmp, &len);
+                // char buffer[1024];
+                // struct sockaddr_in tmp;
+                // socklen_t len = sizeof(tmp);
+                // size_t n = recvfrom(_sockfd, buffer, sizeof(buffer) - 1, 0, (struct sockaddr *)&tmp, &len);
 
-                if (n > 0)
-                    buffer[n] = 0;
-                cout << "执行结果:" << buffer << endl;
+                // if (n > 0)
+                //     buffer[n] = 0;
+                // cout << "执行结果:" << buffer << endl;
             }
         }
         ~udpClient()
