@@ -169,7 +169,7 @@ void routeMessage(int sockfd, string clientip, uint16_t clientport, string messa
     }
 }
 
-// 执行服务器的时候，启动的时候 ./udpServer     port
+// 执行服务器的时候，启动的时候 ./udpServer   port
 int main(int argc, char *argv[])
 {
     if (argc != 2)

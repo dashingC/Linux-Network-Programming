@@ -111,7 +111,7 @@ namespace Server
 
     private:
         uint16_t _port;
-        std::string _ip; // 实际上，  一款网络服务器，不建议指明一个IP
+        std::string _ip; // 实际上，一款网络服务器，不建议指明一个IP
         int _sockfd;
         func_t _callback;
     };
