@@ -88,6 +88,7 @@ namespace Server
                     std::string clientIp = inet_ntoa(peer.sin_addr); // 1 网络序列需要转到主机序列  2 int-->点分十进制IP
                     uint16_t clientPort = ntohs(peer.sin_port);      // 网络序列转主机序列
                     std::string message = buf;
+                    std::cout << "[DEBUG] 等待客户端数据..." << std::endl;
                     std::cout << clientIp << "[" << clientPort << "]" << " say: " << message << std::endl;
 
                     _callback(_sockfd, clientIp, clientPort, message);
