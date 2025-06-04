@@ -41,4 +41,6 @@ void logMessage(int level,const char *format,...)
         va_start(arg,format);
         vsnprintf(logcontent,sizeof logcontent,format,arg);
         std::cout<<logprefix<<logcontent<<std::endl;
+
+
 }
