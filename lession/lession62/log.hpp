@@ -29,7 +29,7 @@ const char *to_levelstr(int level)
     }
 }
 
-void logMessage(int level,const char *format,...)
+void logMessage(int level,const char *format,...)//可变参数列表
 {
 #define NUM 1024
     char logprefix[NUM];
@@ -41,6 +41,5 @@ void logMessage(int level,const char *format,...)
         va_start(arg,format);
         vsnprintf(logcontent,sizeof logcontent,format,arg);
         std::cout<<logprefix<<logcontent<<std::endl;
-
 
 }
