@@ -1,2 +1,2 @@
 .PHONY 
-test:succcess
+test:succcess test
