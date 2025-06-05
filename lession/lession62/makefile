@@ -1,2 +1,2 @@
 .PHONY 
-testy:
+test:succcess
