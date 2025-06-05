@@ -1,2 +1,5 @@
 .PHONY 
-test:succcess test
+test:succcess test 
+nihao 'a\
+achi 
+'
