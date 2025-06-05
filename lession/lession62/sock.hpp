@@ -8,14 +8,8 @@
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include "log.hpp"
+#include "err.hpp"
 
-enum
-{
-    USAGE_ERR = 1,
-    SOCKET_ERR,
-    BIND_ERR,
-    LISTEN_ERR
-};
 class Sock
 {
     const static int backlog = 32;
