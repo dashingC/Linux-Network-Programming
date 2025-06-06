@@ -26,7 +26,7 @@ public:
         }
         logMessage(NORMAL, "create socket success: %d", sock);
 
-        int opt = 1;
+        int opt = 1;//地址复用
         setsockopt(sock,SOL_SOCKET,SO_REUSEADDR|SO_REUSEPORT,&opt,sizeof(opt));
         return sock;
     }
